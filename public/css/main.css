@@ -7,8 +7,7 @@
  |______\__,_|_|___/ /_/    \_\_|\___\__,_|_|  \__,_|___/
                                                          
  Main stylesheet for the personal blog by Luis Alcaras.
- Derived from the Poole + Hyde theme and reduced to current needs.
- Purpose: centralize typography, color, layout, and reusable blocks.
+ Derived from the Gruvbox theme and reduced to current needs.
 */
 
 /*
@@ -18,6 +17,53 @@
  * - Describe scope and dependencies for each addition.
  * - Avoid duplicating declarations handled elsewhere.
  */
+
+/* ------------------------------------------------------------
+  CSS Variables
+  Defines custom properties for colors, fonts, and other values.
+  ------------------------------------------------------------ */
+
+:root {
+  --color-background: #fcfaeb;
+  --color-text: #282828;
+  --color-link: #458588;
+  --color-sidebar-bg: #282828;
+  --color-sidebar-text: #fcfaeb;
+  --color-sidebar-link: #ebdbb2;
+  --color-code-bg: #f2e5bc87;
+  --color-code: #cc241d;
+  --color-border: #a89984;
+  --color-accent: #7c6f64;
+  --color-highlight: #fabd2f;
+  --color-table-odd: #f2e5bc;
+  --color-pagination: #928374;
+  --color-related-small: #928374;
+  --color-post-date: #7c6f64;
+  --color-blockquote: #7c6f64;
+  --color-abbr: #7c6f64;
+  --color-hr-top: #a89984;
+  --color-hr-bottom: #f9f5d7;
+  --font-main: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "IBM Plex Serif", "Times New Roman", Times, serif;
+  --font-mono: "IBM Plex Mono", Menlo, Monaco, "Courier New", monospace;
+  --color-syntax-comment: #928374;
+  --color-syntax-keyword: #fb4934;
+  --color-syntax-operator: #fe8019;
+  --color-syntax-preprocessor: #8ec07c;
+  --color-syntax-string: #b8bb26;
+  --color-syntax-function: #b8bb26;
+  --color-syntax-type: #fabd2f;
+  --color-syntax-name: #83a598;
+  --color-syntax-number: #d3869b;
+  --color-syntax-variable: #282828;
+  --color-syntax-whitespace: #a89984;
+  --color-syntax-error: #fb4934;
+  --color-syntax-error-bg: #f2e5bc;
+  --color-syntax-diff-remove: #fb4934;
+  --color-syntax-diff-remove-border: #cc241d;
+  --color-syntax-diff-insert: #b8bb26;
+  --color-syntax-diff-insert-border: #98971a;
+}
 
 /* ------------------------------------------------------------
   Base configuration and reset
@@ -37,7 +83,7 @@ body {
 }
 
 html {
-  font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-main);
   font-size: 16px;
   line-height: 1.5;
 }
@@ -53,8 +99,8 @@ html {
 }
 
 body {
-  color: #515151;
-  background-color: #fff;
+  color: var(--color-text);
+  background-color: var(--color-background);
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -65,7 +111,7 @@ body {
   ------------------------------------------------------------ */
 
 a {
-  color: #268bd2;
+  color: var(--color-link);
   text-decoration: none;
 }
 a strong {
@@ -85,7 +131,7 @@ h6 {
   margin-bottom: 0.5rem;
   font-weight: bold;
   line-height: 1.25;
-  color: #313131;
+  color: var(--color-text);
   text-rendering: optimizeLegibility;
 }
 h1 {
@@ -112,7 +158,7 @@ p {
 }
 
 strong {
-  color: #303030;
+  color: var(--color-text);
 }
 
 /* ------------------------------------------------------------
@@ -138,14 +184,14 @@ hr {
   position: relative;
   margin: 1.5rem 0;
   border: 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-background);
 }
 
 abbr {
   font-size: 85%;
   font-weight: bold;
-  color: #555;
+  color: var(--color-accent);
   text-transform: uppercase;
 }
 abbr[title] {
@@ -160,13 +206,13 @@ abbr[title] {
 
 code,
 pre {
-  font-family: "IBM Plex Mono", Menlo, Monaco, "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 code {
   padding: 0.25em 0.5em;
   font-size: 85%;
-  color: #bf616a;
-  background-color: #f9f9f9;
+  color: var(--color-code);
+  background-color: var(--color-code-bg);
   border-radius: 3px;
 }
 pre {
@@ -179,7 +225,7 @@ pre {
   white-space: pre-wrap;
   word-break: break-all;
   word-wrap: break-word;
-  background-color: #f9f9f9;
+  background-color: var(--color-code-bg);
 }
 pre code {
   padding: 0;
@@ -194,6 +240,7 @@ pre code {
 }
 .highlight pre {
   margin-bottom: 0;
+  background-color: var(--color-code-bg);
 }
 
 /* ------------------------------------------------------------
@@ -204,8 +251,8 @@ pre code {
 blockquote {
   padding: 0.5rem 1rem;
   margin: 0.8rem 0;
-  color: #7a7a7a;
-  border-left: 0.25rem solid #e5e5e5;
+  color: var(--color-accent);
+  border-left: 0.25rem solid var(--color-border);
 }
 blockquote p:last-child {
   margin-bottom: 0;
@@ -227,17 +274,17 @@ img {
 table {
   margin-bottom: 1rem;
   width: 100%;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--color-border);
   border-collapse: collapse;
 }
 td,
 th {
   padding: 0.25rem 0.5rem;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--color-border);
 }
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
-  background-color: #f9f9f9;
+  background-color: var(--color-table-odd);
 }
 
 /* ------------------------------------------------------------
@@ -266,8 +313,8 @@ tbody tr:nth-child(odd) th {
 .sidebar {
   text-align: center;
   padding: 2rem 1rem;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: #202020;
+  color: var(--color-sidebar-text);
+  background-color: var(--color-sidebar-bg);
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -280,14 +327,18 @@ tbody tr:nth-child(odd) th {
   }
 }
 .sidebar a {
-  color: #fff;
+  color: var(--color-sidebar-link);
 }
 
 .sidebar-about h1 {
   margin-top: 0;
-  color: #fff;
-  font-family: "IBM Plex Serif", "Times New Roman", Times, serif;
+  color: var(--color-sidebar-text);
+  font-family: var(--font-serif);
   font-size: 3rem;
+}
+
+.sidebar h1 a {
+  text-decoration: none;
 }
 
 .sidebar-nav {
@@ -368,7 +419,7 @@ tbody tr:nth-child(odd) th {
   display: block;
   margin-top: -0.5rem;
   margin-bottom: 1rem;
-  color: #9a9a9a;
+  color: var(--color-post-date);
 }
 
 /* ------------------------------------------------------------
@@ -379,7 +430,7 @@ tbody tr:nth-child(odd) th {
 .related {
   padding-top: 2rem;
   padding-bottom: 2rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--color-border);
 }
 .related-posts {
   padding-left: 0;
@@ -390,10 +441,10 @@ tbody tr:nth-child(odd) th {
 }
 .related-posts li small {
   font-size: 75%;
-  color: #999;
+  color: var(--color-related-small);
 }
 .related-posts li a:hover {
-  color: #268bd2;
+  color: var(--color-link);
   text-decoration: none;
 }
 .related-posts li a:hover small {
@@ -404,20 +455,20 @@ tbody tr:nth-child(odd) th {
   overflow: hidden;
   margin-left: -1rem;
   margin-right: -1rem;
-  font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #ccc;
+  font-family: var(--font-main);
+  color: var(--color-pagination);
   text-align: center;
 }
 .pagination-item {
   display: block;
   padding: 1rem;
-  border: 1px solid #eee;
+  border: 1px solid var(--color-border);
 }
 .pagination-item:first-child {
   margin-bottom: -1px;
 }
 a.pagination-item:hover {
-  background-color: #f5f5f5;
+  background-color: var(--color-code-bg);
 }
 @media (min-width: 30em) {
   .pagination {
@@ -440,196 +491,196 @@ a.pagination-item:hover {
 }
 
 .highlight .hll {
-  background-color: #ffc;
+  background-color: var(--color-highlight);
 }
 .highlight .c {
-  color: #999;
+  color: var(--color-syntax-comment);
 }
 .highlight .err {
-  color: #a00;
-  background-color: #faa;
+  color: var(--color-syntax-error);
+  background-color: var(--color-syntax-error-bg);
 }
 .highlight .k {
-  color: #069;
+  color: var(--color-syntax-keyword);
 }
 .highlight .o {
-  color: #555;
+  color: var(--color-syntax-operator);
 }
 .highlight .cm {
-  color: #09f;
+  color: var(--color-syntax-comment);
   font-style: italic;
 }
 .highlight .cp {
-  color: #099;
+  color: var(--color-syntax-preprocessor);
 }
 .highlight .c1 {
-  color: #999;
+  color: var(--color-syntax-comment);
 }
 .highlight .cs {
-  color: #999;
+  color: var(--color-syntax-comment);
 }
 .highlight .gd {
-  background-color: #fcc;
-  border: 1px solid #c00;
+  background-color: var(--color-syntax-diff-remove);
+  border: 1px solid var(--color-syntax-diff-remove-border);
 }
 .highlight .ge {
   font-style: italic;
 }
 .highlight .gr {
-  color: #f00;
+  color: var(--color-syntax-error);
 }
 .highlight .gh {
-  color: #030;
+  color: var(--color-syntax-string);
 }
 .highlight .gi {
-  background-color: #cfc;
-  border: 1px solid #0c0;
+  background-color: var(--color-syntax-diff-insert);
+  border: 1px solid var(--color-syntax-diff-insert-border);
 }
 .highlight .go {
-  color: #aaa;
+  color: var(--color-syntax-whitespace);
 }
 .highlight .gp {
-  color: #009;
+  color: var(--color-syntax-preprocessor);
 }
 .highlight .gs {
   font-weight: bold;
 }
 .highlight .gu {
-  color: #030;
+  color: var(--color-syntax-string);
 }
 .highlight .gt {
-  color: #9c6;
+  color: var(--color-syntax-error);
 }
 .highlight .kc {
-  color: #069;
+  color: var(--color-syntax-keyword);
 }
 .highlight .kd {
-  color: #069;
+  color: var(--color-syntax-keyword);
 }
 .highlight .kn {
-  color: #069;
+  color: var(--color-syntax-keyword);
 }
 .highlight .kp {
-  color: #069;
+  color: var(--color-syntax-keyword);
 }
 .highlight .kr {
-  color: #069;
+  color: var(--color-syntax-keyword);
 }
 .highlight .kt {
-  color: #078;
+  color: var(--color-syntax-type);
 }
 .highlight .m {
-  color: #f60;
+  color: var(--color-syntax-number);
 }
 .highlight .s {
-  color: #d44950;
+  color: var(--color-syntax-string);
 }
 .highlight .na {
-  color: #4f9fcf;
+  color: var(--color-syntax-name);
 }
 .highlight .nb {
-  color: #366;
+  color: var(--color-syntax-operator);
 }
 .highlight .nc {
-  color: #0a8;
+  color: var(--color-syntax-type);
 }
 .highlight .no {
-  color: #360;
+  color: var(--color-syntax-number);
 }
 .highlight .nd {
-  color: #99f;
+  color: var(--color-syntax-name);
 }
 .highlight .ni {
-  color: #999;
+  color: var(--color-syntax-comment);
 }
 .highlight .ne {
-  color: #c00;
+  color: var(--color-syntax-error);
 }
 .highlight .nf {
-  color: #c0f;
+  color: var(--color-syntax-function);
 }
 .highlight .nl {
-  color: #99f;
+  color: var(--color-syntax-name);
 }
 .highlight .nn {
-  color: #0cf;
+  color: var(--color-syntax-type);
 }
 .highlight .nt {
-  color: #2f6f9f;
+  color: var(--color-syntax-name);
 }
 .highlight .nv {
-  color: #033;
+  color: var(--color-syntax-variable);
 }
 .highlight .ow {
-  color: #000;
+  color: var(--color-syntax-operator);
 }
 .highlight .w {
-  color: #bbb;
+  color: var(--color-syntax-whitespace);
 }
 .highlight .mf {
-  color: #f60;
+  color: var(--color-syntax-number);
 }
 .highlight .mh {
-  color: #f60;
+  color: var(--color-syntax-number);
 }
 .highlight .mi {
-  color: #f60;
+  color: var(--color-syntax-number);
 }
 .highlight .mo {
-  color: #f60;
+  color: var(--color-syntax-number);
 }
 .highlight .sb {
-  color: #c30;
+  color: var(--color-syntax-string);
 }
 .highlight .sc {
-  color: #c30;
+  color: var(--color-syntax-string);
 }
 .highlight .sd {
-  color: #c30;
+  color: var(--color-syntax-string);
   font-style: italic;
 }
 .highlight .s2 {
-  color: #c30;
+  color: var(--color-syntax-string);
 }
 .highlight .se {
-  color: #c30;
+  color: var(--color-syntax-string);
 }
 .highlight .sh {
-  color: #c30;
+  color: var(--color-syntax-string);
 }
 .highlight .si {
-  color: #a00;
+  color: var(--color-syntax-error);
 }
 .highlight .sx {
-  color: #c30;
+  color: var(--color-syntax-string);
 }
 .highlight .sr {
-  color: #3aa;
+  color: var(--color-syntax-preprocessor);
 }
 .highlight .s1 {
-  color: #c30;
+  color: var(--color-syntax-string);
 }
 .highlight .ss {
-  color: #fc3;
+  color: var(--color-syntax-type);
 }
 .highlight .bp {
-  color: #366;
+  color: var(--color-syntax-operator);
 }
 .highlight .vc {
-  color: #033;
+  color: var(--color-syntax-variable);
 }
 .highlight .vg {
-  color: #033;
+  color: var(--color-syntax-variable);
 }
 .highlight .vi {
-  color: #033;
+  color: var(--color-syntax-variable);
 }
 .highlight .il {
-  color: #f60;
+  color: var(--color-syntax-number);
 }
 
 .css .o,
 .css .o + .nt,
 .css .nt + .nt {
-  color: #999;
+  color: var(--color-syntax-comment);
 }
