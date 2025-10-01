@@ -32,7 +32,7 @@
  */
 
 html {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 48em) {
   html {
@@ -79,8 +79,8 @@ html {
 .sidebar-about h1 {
   color: #fff;
   margin-top: 0;
-  font-family: "Abril Fatface", serif;
-  font-size: 3.25rem;
+  font-family: "IBM Plex Serif", "Times New Roman", Times, serif;
+  font-size: 3rem;
 }
 
 /* Sidebar nav */
@@ -107,13 +107,19 @@ a.sidebar-nav-item:focus {
 
 @media (min-width: 48em) {
   .sidebar-sticky {
-    position: absolute;
-    right:  1rem;
-    bottom: 1rem;
-    left:   1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .sidebar-nav {
+    flex-grow: 1;
+  }
+
+  .sidebar-footer {
+    margin-top: auto;
   }
 }
-
 
 /* Container
  *
@@ -171,7 +177,6 @@ a.sidebar-nav-item:focus {
 /*
  * Themes
  *
- * As of v1.1, Hyde includes optional themes to color the sidebar and links
  * within blog posts. To use, add the class of your choosing to the `body`.
  */
 

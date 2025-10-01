@@ -8,7 +8,7 @@ permalink:        pretty
 # Setup
 title:            Luis Alcaras
 tagline:          'Software Engineer at F5'
-description:      'Personal blog by Luis Alcaras, software engineer at F5. Sharing thoughts, experiences, and insights about software development.'
+description:      "Practical lessons on cloud security engineering, resilient data platforms, and full-stack systems built for real-world scale."
 url:              https://luisalcarasr.github.io
 baseurl:          /blog
 
