@@ -302,6 +302,11 @@ tbody tr:nth-child(odd) th {
   Manages containers, sidebar, and responsive behavior.
   ------------------------------------------------------------ */
 
+.layout-default {
+  display: flex;
+  min-height: 100vh;
+}
+
 .container {
   max-width: 38rem;
   padding-left: 1rem;
@@ -316,14 +321,22 @@ tbody tr:nth-child(odd) th {
   color: var(--color-sidebar-text);
   background-color: var(--color-sidebar-bg);
 }
+
+.ghostbar {
+  display: none;
+  max-width: 18rem;
+  width: fit-content;
+}
+
 @media (min-width: 48em) {
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
     width: 18rem;
     text-align: left;
+  }
+
+  .ghostbar {
+    width: 18rem;
+    display: block;
   }
 }
 .sidebar a {
