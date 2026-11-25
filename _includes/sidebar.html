@@ -27,6 +27,13 @@
       {% endfor %}
     </nav>
 
+    <nav class="sidebar-nav sidebar-posts">
+      <span class="sidebar-nav-item sidebar-posts-title">Publicaciones</span>
+      {% for post in site.posts %}
+        <a class="sidebar-nav-item{% if page.url == post.url %} active{% endif %}" href="{{ site.baseurl }}{{ post.url }}">{{ post.title | escape }}</a>
+      {% endfor %}
+    </nav>
+
     <p class="sidebar-footer sidebar-copyrights">&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
   </div>
 </div>
